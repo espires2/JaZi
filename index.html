@@ -1,0 +1,62 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Page Title</title>
+		<meta name="description" content="My Site">
+		<meta name="keywords" content="html site template">
+		<link rel="stylesheet" href="style.css">
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
+	</head>
+	<body class=".quicksand">
+		
+		<div class="hero">
+			<div class="container">
+				<h1>COLORADO TRIP!!!!!!</h1>
+				<div class="clock">
+					<span id="days">00</span>
+					<span id="hrs">00</span>
+					<span id="min">00</span>
+					<span id="sec">00</span>
+				</div>
+			</div>
+		</div>
+
+		
+<script>
+  const days = document.getElementById("days");
+  const hrs = document.getElementById("hrs");
+  const min = document.getElementById("min");
+  const sec = document.getElementById("sec");
+
+  // Use your target date and time. This example is December 31, 2026 at midnight.
+  const targetDate = new Date("2026-10-16T00:00:00");
+
+  function updateCountdown() {
+    const remaining = targetDate.getTime() - Date.now();
+
+    if (remaining <= 0) {
+      days.textContent = "00";
+      hrs.textContent = "00";
+      min.textContent = "00";
+      sec.textContent = "00";
+      clearInterval(timer);
+      return;
+    }
+
+    const totalSeconds = Math.floor(remaining / 1000);
+    days.textContent = String(Math.floor(totalSeconds / 86400)).padStart(2, "0");
+    hrs.textContent = String(Math.floor((totalSeconds % 86400) / 3600)).padStart(2, "0");
+    min.textContent = String(Math.floor((totalSeconds % 3600) / 60)).padStart(2, "0");
+    sec.textContent = String(totalSeconds % 60).padStart(2, "0");
+  }
+
+  updateCountdown(); // Show the countdown immediately
+  const timer = setInterval(updateCountdown, 1000);
+</script>
+
+	</body>
+</html>
